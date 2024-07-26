@@ -1,7 +1,9 @@
 import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
+dotenv.config();
 
 
-export const db = new Sequelize('postgresql://administrador_productos_pern_user:ImNg9Yz3VNtV4Sf2MUZ8Qfloe5dBwIVc@dpg-cqhph856l47c73fs98eg-a.oregon-postgres.render.com/administrador_productos_pern', {
+export const db = new Sequelize(process.env.DB_URL!, {
   dialectOptions: {
     ssl: {
       require: false,
