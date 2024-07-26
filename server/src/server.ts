@@ -7,12 +7,12 @@ async function connectDB() {
   try {
     await db.authenticate()
     db.sync()
-    console.log(colors.green( 'Connected to database'));
+    console.log(colors.green('Connected to database'));
 
 
   } catch (error) {
     console.log(error);
-    console.log(colors.red.bold( 'Could not connect to database'));
+    console.log(colors.red.bold('Could not connect to database'));
   }
 }
 
@@ -20,4 +20,4 @@ connectDB()
 
 export const server = express();
 
-server.use(router)
+server.use('/api', router)
