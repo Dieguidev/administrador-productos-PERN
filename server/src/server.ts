@@ -20,4 +20,6 @@ connectDB()
 
 export const server = express();
 
+server.use(express.json());
+
 server.use('/api', router)

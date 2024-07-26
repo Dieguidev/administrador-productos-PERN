@@ -1,4 +1,4 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, Default, Model, Table } from "sequelize-typescript";
 
 
 @Table({
@@ -8,24 +8,20 @@ class Product extends Model {
   @Column({
     type: DataType.STRING(100)
   })
-  name: string;
+  name!: string;
 
   @Column({
     type: DataType.FLOAT
   })
-  price: number;
+  price!: number;
 
+  @Default(true)
   @Column({
     type: DataType.BOOLEAN
   })
-  availability: boolean;
+  availability!: boolean;
 
-  constructor(name: string, price: number, availability: boolean) {
-    super();
-    this.name = name;
-    this.price = price;
-    this.availability = availability;
-  }
+
 }
 
 export default Product;
