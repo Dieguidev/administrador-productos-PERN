@@ -1,14 +1,12 @@
 import { Router } from "express";
 import { body } from "express-validator";
-import { createProduct } from "./handlers/product";
+import { createProduct, getProducts } from "./handlers/product";
 import { handleInputErrors } from "./middlewares";
 
 
 export const router = Router();
 
-router.get("/", (req, res) => {
-  res.json("Hello, World!");
-});
+router.get("/products", getProducts);
 
 router.post("/products",
   body('name').notEmpty().withMessage('El nombre del producto no puede ir vacío'),
