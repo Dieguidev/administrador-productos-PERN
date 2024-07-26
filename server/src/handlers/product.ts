@@ -4,9 +4,13 @@ import { validationResult } from "express-validator";
 
 
 export const createProduct = async (req: Request, res: Response) => {
-  const { name, price, availability } = req.body;
+  try {
 
-  const product = await Product.create(req.body);
+    const product = await Product.create(req.body);
 
-  res.json({ data: product });
+    res.json({ data: product });
+  } catch (error) {
+    console.log(error);
+
+  }
 }
