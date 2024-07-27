@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { body } from "express-validator";
-import { createProduct, getProducts } from "./handlers/product";
+import { body, param } from "express-validator";
+import { createProduct, getProductById, getProducts } from "./handlers/product";
 import { handleInputErrors } from "./middlewares";
 
 
@@ -16,3 +16,8 @@ router.post("/products",
     .custom(value => value > 0).withMessage('Precio no válido'),
     handleInputErrors,
   createProduct);
+
+router.get("/products/:id",
+  param('id').isNumeric().withMessage('El id debe ser un número'),
+  handleInputErrors,
+  getProductById);
