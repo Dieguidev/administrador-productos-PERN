@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { body, param } from "express-validator";
-import { createProduct, getProductById, getProducts, updateProduct } from "./handlers/product";
+import { createProduct, getProductById, getProducts, updateProduct, updateProductAvailability } from "./handlers/product";
 import { handleInputErrors } from "./middlewares";
 
 
@@ -32,3 +32,7 @@ router.put("/products/:id",
   body('availability').isBoolean().withMessage('Valor no válido'),
   handleInputErrors,
   updateProduct);
+
+router.patch("/products/available/:id",
+  param('id').isNumeric().withMessage('El id debe ser un número'),
+  updateProductAvailability)
