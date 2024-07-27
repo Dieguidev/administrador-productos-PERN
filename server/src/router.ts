@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { body, param } from "express-validator";
-import { createProduct, getProductById, getProducts, updateProduct, updateProductAvailability } from "./handlers/product";
+import { createProduct, deleteProduct, getProductById, getProducts, updateProduct, updateProductAvailability } from "./handlers/product";
 import { handleInputErrors } from "./middlewares";
 
 
@@ -36,3 +36,8 @@ router.put("/products/:id",
 router.patch("/products/available/:id",
   param('id').isNumeric().withMessage('El id debe ser un número'),
   updateProductAvailability)
+
+router.delete("/products/:id",
+  param('id').isNumeric().withMessage('El id debe ser un número'),
+  handleInputErrors,
+  deleteProduct);
