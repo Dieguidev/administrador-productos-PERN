@@ -45,6 +45,7 @@ server.use(cors(corsOption))
 
 server.use(express.json());
 
+server.use(morgan('dev'));
 server.use('/api', router)
 
 server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerUiOptions))
