@@ -2,6 +2,7 @@ import express from 'express';
 import colors from 'colors';
 import dotenv from "dotenv";
 dotenv.config();
+import morgan from 'morgan';
 import cors, { CorsOptions } from 'cors'
 import { router } from './router';
 import { db } from './config/db';
