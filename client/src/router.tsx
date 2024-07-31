@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./layouts/Layout";
 import { Products, productsLoader } from "./views/Products";
 import { NewProduct, newProductAction } from "./views/NewProduct";
+import { EditProduct } from "./views/EditProducts";
 
 export const router = createBrowserRouter([
   {
@@ -11,12 +12,16 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Products />,
-        loader: productsLoader
+        loader: productsLoader,
       },
       {
         path: "products/nuevo",
         element: <NewProduct />,
         action: newProductAction,
+      },
+      {
+        path: "products/:id/editar", //ROA Pattern - Resource Oriented Architecture
+        element: <EditProduct />,
       },
     ],
   },
