@@ -9,5 +9,5 @@ export const db = new Sequelize(process.env.DB_URL!, {
       require: false,
     }
   },
-  models: [__dirname + "/../models/**/*.ts"],
+  models: [__dirname + "/../models/**/*"],
 })
