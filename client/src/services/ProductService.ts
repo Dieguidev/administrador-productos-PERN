@@ -88,3 +88,14 @@ export async function deleteProduct(id: Product['id']) {
     console.log(error);
   }
 }
+
+
+export async function updateAvailabilityProduct(id: Product['id']) {
+  try {
+    const url = `${import.meta.env.VITE_API_URL}/api/products/available/${id}`
+    await axios.patch(url);
+  } catch (error) {
+    console.log(error);
+
+  }
+}
