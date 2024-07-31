@@ -44,6 +44,11 @@ export const ProductDetails = ({ product }: ProductDetailsProps) => {
             className="w-full"
             method="POST"
             action={`products/${product.id}/eliminar`}
+            onSubmit={(e) => {
+              if (!confirm("¿Estás seguro de eliminar el producto?")) {
+                e.preventDefault();
+              }
+            }}
           >
             <input
               type="submit"
