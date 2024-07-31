@@ -58,3 +58,24 @@ export async function getProduct(id: Product['id']) {
     console.log(error);
   }
 }
+
+export async function updateProduct(id: Product['id'], data: ProductData) {
+  try {
+    const result = safeParse(DraftProductSchema, {
+      name: data.name,
+      price: +data.price
+    });
+
+    if (result.success) {
+      const url = `${import.meta.env.VITE_API_URL}/api/products/${id}`
+      await axios.put(url, {
+        name: result.output.name,
+        price: result.output.price
+      })
+    } else {
+      throw new Error('Invalid data');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
